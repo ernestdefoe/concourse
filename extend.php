@@ -126,9 +126,11 @@ return [
          * The people taking part, most recently active first, at most five
          * per discussion.
          *
-         * 🚨 Eager loaded, `limit(5)` is a PER-DISCUSSION limit (a row number
-         * over each discussion), so a thread with a thousand repliers still
-         * returns five rows. Only comments anyone can read count: not hidden,
+         * 🚨 Eager loaded, `limit(5)` is a PER-DISCUSSION limit, not one SQL
+         * LIMIT for the page: Laravel's HasOneOrMany::limit() calls
+         * groupLimit(), a row_number() partitioned by discussion_id, so every
+         * row gets its own five and a thread with a thousand repliers still
+         * returns five rows (QueryCountTest::every_row_gets_its_own_five_faces). Only comments anyone can read count: not hidden,
          * not private, and approved where flarum/approval is enabled.
          */
         ->relationship('concourseParticipants', function (Discussion $discussion) {

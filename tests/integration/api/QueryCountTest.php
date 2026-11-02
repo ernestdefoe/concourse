@@ -129,6 +129,30 @@ class QueryCountTest extends TestCase
         $this->assertSame($one, $fifty);
     }
 
+    /**
+     * 🚨 `limit(5)` on the eager-loaded relation is NOT one SQL LIMIT for the
+     * whole page: Laravel's HasOneOrMany::limit() turns into groupLimit(), a
+     * row_number() partitioned by discussion_id. Every one of fifty rows, each
+     * with six commenters, must get its own five most recent people.
+     */
+    #[Test]
+    public function every_row_gets_its_own_five_faces()
+    {
+        $this->extension('flarum-tags', 'flarum-likes', 'ernestdefoe-concourse');
+        $this->seedForum();
+
+        [, $rows] = $this->measure('/api/discussions', ['include' => self::LIST_INCLUDE, 'page' => ['limit' => 50]], null);
+
+        $this->assertCount(50, $rows);
+
+        foreach ($rows as $row) {
+            $d = (int) $row['id'];
+            $expected = array_map(fn ($n) => 2 + (($d + $n) % 20), [6, 5, 4, 3, 2]);
+
+            $this->assertSame($expected, array_map(fn ($p) => $p['id'], $row['attributes']['concourseParticipants']), "discussion $d");
+        }
+    }
+
     #[Test]
     public function concourse_adds_one_query_for_likes_and_two_for_faces()
     {
