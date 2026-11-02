@@ -1,0 +1,64 @@
+ernestdefoe-concourse:
+  admin:
+    settings:
+      show_profile_label: "Afficher la carte du profil"
+      show_profile_help: "La propre carte du lecteur en haut de la colonne de droite, avec sa couverture, son avatar, sa bio et un bouton Modifier le profil. Les invités voient l'accueil du forum avec S'inscrire et Se connecter [...]"
+      show_contributors_label: "Afficher les meilleurs contributeurs"
+      show_contributors_help: "Ceux qui ont reçu le plus de mentions J'aime (ou, sans l'extension Likes, ont écrit le plus de commentaires) pendant la période choisie. Seuls les échanges publics comptent."
+      contributors_period_label: "Début des meilleurs contributeurs"
+      contributors_period_help: "La période que voit un visiteur en premier. Ils peuvent choisir entre aujourd'hui, cette semaine, ce mois et cette année."
+      period_day: "Aujourd'hui"
+      period_week: "Cette semaine"
+      period_month: "Ce mois-ci"
+      period_year: "Cette année"
+      contributors_count_label: "Personnes dans le Top Contributeurs"
+      contributors_count_help: "Entre 1 et 10."
+      show_participants_label: "Afficher qui participe"
+      show_participants_help: "Petits avatars sous chaque discussion dans la liste et dans le panneau latéral de la discussion."
+      footer_links_label: "Liens du pied de page"
+      footer_links_help: "Un lien par ligne, écrit comme Libellé | adresse. Les adresses peuvent être une page de ce forum (/p/about) ou un lien https:// complet."
+  forum:
+    sidebar:
+      label: "Navigation du forum"
+      home: "Accueil"
+      following: "Suivi"
+      admin: "Admin"
+      tags: "Étiquettes"
+      all_tags: "Toutes les étiquettes"
+      more: "Plus"
+      unread: "Nouvelle activité"
+    head:
+      search: "Résultats pour “{q}”"
+    blocks:
+      label: "Profil et communauté"
+    profile:
+      label: "Votre profil"
+      edit: "Modifier le profil"
+      welcome: "Bienvenue sur {forum}"
+    contributors:
+      title: "Meilleurs contributeurs"
+      period_label: "Période"
+      period:
+        day: "Aujourd'hui"
+        week: "Hebdomadaire"
+        month: "Mensuel"
+        year: "Annuel"
+      likes: "{count, plural, one {{formatted} j'aime} other {{formatted} j'aimes}}"
+      posts: "{count, plural, one {{formatted} commentaire} other {{formatted} commentaires}}"
+      empty:
+        day: "Personne encore aujourd'hui."
+        week: "Personne encore cette semaine."
+        month: "Personne encore ce mois-ci."
+        year: "Personne encore cette année."
+    row:
+      likes: "{count, plural, one {# j'aime sur le premier message} other {# j'aimes sur le premier message}}"
+      participants: "{count, plural, one {# personne participant} other {# personnes participant}}"
+    panel:
+      label: "À propos de cette discussion"
+      replies: "{count, plural, one {réponse} other {réponses}}"
+      participants: "{count, plural, one {personne} other {personnes}}"
+      views: "{count, plural, one {vue} other {vues}}"
+    phone:
+      tabs: "Principal"
+      messages: "Messages"
+      more: "Plus"
