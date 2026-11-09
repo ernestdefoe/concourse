@@ -5,6 +5,7 @@ import installIndexPage from './indexPage';
 import installRows from './rows';
 import installDiscussionPage from './discussionPage';
 import registerWidgets from './widgets';
+import installFofStart from './fofStart';
 import { bootVisits } from './visits';
 
 // NOTE: the admin extender is exported from js/src/admin/index.tsx and
@@ -26,6 +27,7 @@ app.initializers.add(
     installRows();
     installDiscussionPage();
     registerWidgets();
+    installFofStart();
   },
   -100
 );

@@ -11,6 +11,7 @@ import type Mithril from 'mithril';
 import { tagTree } from '../tags';
 import { markTagSeen, tagUnread } from '../visits';
 import { closeDrawer } from '../drawer';
+import { fofStartSection } from '../fofStart';
 import { canStart, currentTag, extensionEnabled, startDiscussion, t, ts } from '../util';
 
 /**
@@ -74,6 +75,8 @@ export default class Sidebar extends Component {
 
     return (
       <nav className="ConcourseSidebar" aria-label={ts('sidebar.label')}>
+        {onIndex ? fofStartSection('top') : null}
+
         <ul className="ConcourseNav">
           <li>
             <Link
@@ -155,6 +158,8 @@ export default class Sidebar extends Component {
         ) : null}
 
         {this.extras()}
+
+        {onIndex ? fofStartSection('bottom') : null}
 
         {footer.length ? (
           <footer className="ConcourseSidebar-footer">
